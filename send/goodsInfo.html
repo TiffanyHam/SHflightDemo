@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>填写电子托运书</title>
+		<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<link rel="stylesheet" type="text/css" href="../css/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	</head>
+
+	<body ontouchstart>
+		<!--<header class="page-header">
+			<a href="searchInfo.html" class="page-return">
+				<img src="../images/back.png" alt="" class="return" width="100%">
+			</a>
+			<span class="page-name">货物信息</span>
+		</header>-->
+		<div class="weui-cells t-center" style="margin-top:0;">
+			<a class="weui-cell weui-cell_access" href="send2.html?title=update&&isUpdate=yes">
+				<div class="weui-cell__ft weui-cell__fl left_arow"></div>
+				<div class="weui-cell__bd">
+				  <p>货物信息</p>
+				</div>
+			</a>
+		</div>
+		<div class="weui-cells weui-cells_form  cells_top">
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">货物品名</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="text" value="烟标"></div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">件数</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="number" value="10"></div>
+			</div>
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">重量</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="number" value="100.0" style="width: 90%;">KG</div>
+			</div>
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">包装</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="text" value="100.0" style="width: 90%;">KG</div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">运输声明价值</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="text" value="否"></div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">是否投保</label></div>
+				<div class="weui-cell__bd bd"> <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox login_checkbox"></div>
+
+			</div>
+			
+			<div class="weui-btn-area">
+					<a class="weui-btn weui-btn_primary" href="#" id="confirm">确定</a>
+				</div>
+
+		</div>
+		<br />
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jquery-weui.min.js" type="text/javascript" charset="utf-8"></script>
+	
+</html>

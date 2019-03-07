@@ -1,0 +1,592 @@
+html {
+	background-color: #f8f8f8;
+}
+
+body,
+input,
+textarea,
+i,
+a,
+.page {
+	font-family: "微软雅黑";
+}
+
+.weui-tabbar {
+	position: fixed;
+}
+
+.weui-btn_primary {
+	background: #2593b8;
+}
+
+.weui-btn_plain-primary,
+.toolbar .picker-button,
+.weui-cells_checkbox .weui-check:checked+.weui-icon-checked:before,
+.weui-agree__checkbox:checked:before,
+.weui-search-bar__cancel-btn {
+	color: #2593b8;
+}
+
+.weui-dialog__btn {
+	color: #2593b8;
+	font-size: 14px;
+}
+
+.weui-btn_plain-primary {
+	border: 1px solid #2593b8;
+}
+
+.weui-tabbar__item.weui-bar__item_on .weui-tabbar__label {
+	color: #333;
+}
+
+.weui-cell_access .weui-cell__fl:after {
+	border-width: 0 0 2px 2px;
+}
+
+.weui-agree__checkbox {
+	width: 15px;
+	height: 15px;
+}
+
+.weui-agree__checkbox:checked:before {
+	font-size: 18px;
+}
+.weui-tabbar__icon{
+	width:20px;
+	height:20px;
+}
+
+.t-center {
+	text-align: center;
+}
+
+.t-right {
+	text-align: right;
+}
+
+.t-left {
+	text-align: left;
+}
+.padd-tb{
+	padding:10px 0;
+}
+.p-relative{
+	position:relative;
+}
+.p-absolute{
+	position:absolute;
+}
+
+.weui-cell_access .left_arow:after {
+	height: 10px;
+	width: 10px;
+	border-color: #666;
+	right: -4px;
+}
+.weui-cells:after{
+	border-bottom:0px;
+}
+
+
+/*寄件*/
+
+.weui-cell b {
+	font-style: normal;
+	color: red;
+}
+
+
+.weui-icon-send,
+.weui-icon-receiver {
+	background: #f2a128;
+	font-size: 12px;
+	color: #fff;
+	border-radius: 100%;
+	line-height: 1.8;
+	width: 22px;
+	margin-right: 8px;
+	text-align: -webkit-center;
+	font-family: "微软雅黑";
+}
+
+.weui-icon-receiver {
+	background: #7388fb;
+}
+
+.b-wEit {
+	width: 80%;
+	font-size: 14px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.termLink {
+	font-size: 14px;
+	line-height: 37px;
+	display: inline-block;
+	margin-left: -10px;
+}
+.termLink a{
+	color:#2593b8;
+}
+
+
+/*始发站*/
+
+.cityLable {
+	padding: 0 0 0 15%;
+    line-height: 30px;
+    width: 15%;
+    display: inline-block;
+}
+
+
+/*登录*/
+
+.logo {
+	margin: 4% 0 4% 0;
+}
+
+.logo a {
+	display: block;
+	margin: 0 auto;
+	width: 56%;
+}
+
+.logo img {
+	display: block;
+	width: 100%;
+	margin-left: 1.1%;
+}
+
+.login_form {
+	width: 80%;
+	margin: 0 auto;
+	background-color: transparent;
+}
+
+.login_input {
+	border: 1px solid #d9d9d9;
+	border-radius: 5px;
+	margin-bottom: 3%;
+	font-size: 14px;
+}
+
+.login_btn {
+	margin: 1.17647059em 0px .3em;
+}
+
+.login_footer a {
+	text-decoration: underline;
+	color: blue;
+}
+
+.login_check {
+	padding: .5em 0px;
+	display: inline-block;
+	margin-right: 6%;
+}
+
+.login_check span {
+	font-size: 12px;
+}
+
+.login_checkbox:checked:before {
+	color: #2593b8;
+}
+
+.login_btn a {
+	background-color: #2593b8;
+	font-size: 14px;
+}
+
+
+/*我的*/
+
+.home-header {
+	position: relative;
+	height: 6.4rem;
+	background: url(../images/bg.jpg) no-repeat center center;
+	background-size: 100% 100%;
+	color: #fff!important;
+	width: 100%;
+}
+
+.padd {
+	padding: 30px 15px;
+}
+
+.box__img {
+	border-radius: 50%;
+}
+
+.btn_wid {
+	width: 60%;
+	font-size: 14px;
+}
+
+.box_tel {
+	font-size: 14px;
+}
+
+.set-sub {
+	padding: 15px 15px;
+}
+
+a.header_color {
+	color: #fff;
+	background: #5bb3fb;
+	-webkit-tap-highlight-color: #5bb3fb;
+}
+
+.box_name {
+	color: #fff;
+	font-size: 14px;
+}
+
+a.header_color:active {
+	background-color: #5bb3fb;
+}
+
+.weui-cell_primary p {
+	font-size: 14px;
+}
+.foot_txt {
+	color: #0FB9EF !important;
+}
+
+/*查询*/
+
+
+/*goods_info*/
+
+.make_dam {
+	background: #2593b8;
+	position: absolute;
+	right: 20px;
+	color: #fff;
+	padding: 5px;
+	top: 6px;
+}
+
+.cells_top {
+	margin-top: 0;
+}
+
+#confirm {
+	background: #666666;
+}
+
+.tabbar_txt {
+	color: #333;
+}
+.c_status{
+	padding:2px 5px;
+	color:#fff;
+	font-size:10px;
+	display:inline-block;
+	margin:0 10px;
+}
+
+
+/*details_info*/
+
+.ad {
+	font-size: 12px;
+	color: #999;
+}
+
+.hd {
+	font-size: 14px;
+}
+
+.bd {
+	font-size: 13px;
+	color: #999;
+}
+
+.drop {
+	position: absolute;
+	right: 0;
+	bottom: -14px;
+}
+
+.receive_time .weui-cell:before {
+	border-top: none;
+}
+.mgr_bottom{
+	margin-bottom:10px;
+}
+
+
+
+/*search_info*/
+
+.search_head {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 112px;
+	display: block;
+	z-index: 1;
+}
+
+.make_dam_o {
+	position: absolute;
+	right: 20px;
+	color: #fff;
+	padding: 3px;
+}
+
+.c_red {
+	background: rgba(215, 27, 27, 1);
+}
+
+.c_blue {
+	background: #2593b8;
+}
+
+.c_yellow {
+	background: rgba(225, 161, 67, 1);
+}
+
+.c_gray {
+	background: rgba(153, 153, 153, 1);
+}
+
+.make_dam_o a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.weui-models {
+	text-align: center;
+	font-size: 18px;
+	color: #101010;
+	padding: 15px 0;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.arrow-right{
+	width: 100%;
+	height: 1px;
+	border-top: 1px solid #CCCCCC;
+	vertical-align: top;
+	margin-top: 2px;
+	position: relative;
+}
+.arrow-right .triangle_border_right{
+	left:100%;
+	top:-5px;
+}
+.arrow-right .triangle_border_left{
+	top:-5px;
+}
+
+.arrow_text {
+	font-size: 12px;
+	color: #999;
+}
+
+.bg_round {
+	top: 120px;
+}
+
+.weui-cell_txt {
+	font-size: 13px;
+	color: #666666;
+}
+
+.panel_part {
+	background: #fff;
+	margin-top:10px;
+}
+.weui-flex__item2 {
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    flex: 2;
+}
+
+
+/*下拉菜单*/
+
+.leftMenu {
+	width: 100%;
+	height: auto;
+	background-color: #fff;
+	margin-top:10px;
+}
+
+.leftMenu .topMenu {
+	height: 42px;
+	background-color: #0065a5;
+}
+
+.leftMenu .topMenu img {
+	margin: 11px;
+	float: left;
+}
+
+.leftMenu .topMenu .changeMenu {
+	cursor: pointer;
+}
+
+.leftMenu .topMenu .banshi {
+	padding-left: 23px;
+}
+
+.leftMenu .topMenu .menuTitle {
+	text-align: center;
+	color: #F2F2F2;
+	float: left;
+	line-height: 42px;
+	font-size: 16px;
+	width: 120px;
+}
+
+.menu_list {
+	width: 100%;
+	background: #354045;
+}
+
+.menu_list ul li {
+	display: block;
+	text-align: center;
+	width: 100%;
+}
+
+.menu_list ul li .fuMenu {
+	color: #000;
+	font-size: 14px;
+	cursor: pointer;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	width: 49%;
+	float: left;
+	position: relative;
+}
+
+.menu_list ul li .xiala {
+	float: left;
+	/* margin-left: -155px; */
+	/* margin-top: 27px; */
+	position: absolute;
+	/*left: 121px;*/
+	left:63%;
+	top: 28px;
+}
+
+.menu_list ul li .div1 {
+	width: 100%;
+	max-height: 130px;
+	overflow-y: auto;
+	height: auto;
+	/* float: left; */
+	position: absolute;
+	top: 100px;
+	background: #fff;
+	z-index: 9999;
+	padding: 2% 0 8% 0;
+}
+
+.menu_list ul li .div2 {
+	height: 30px!important;
+	max-height: 30px!important;
+	overflow: hidden!important;
+}
+
+.menu_list ul li .div1 .zcd {
+	color: #666;
+	font-size: 14px;
+	height: 35px;
+	background-color: #fff;
+	margin-bottom: 10px;
+	cursor: pointer;
+	line-height: 35px;
+	text-align: center;
+	width: 18%;
+	display: inline-block;
+	border: 1px solid #f0ebeb;
+	border-radius: 5px;
+}
+
+.div1 {
+	height: 200px;
+	display: none;
+}
+
+.menu_list ul li .div1 .zcd:hover {
+	color: #0FB9EF;
+	border: 1px solid #0FB9EF;
+}
+
+.removes {
+	color: #0FB9EF !important;
+	border: 1px solid #0FB9EF!important;
+}
+
+/*
+*
+* 箭头
+*
+*/
+
+/*向上
+<span class="triangle_border_up"></span>
+*/
+.triangle_border_up{
+    display:block;
+    width:0;
+    height:0;
+    border-width:0 5px 5px;
+    border-style:solid;
+    border-color:transparent transparent #ccc;/*透明 透明  黄*/
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+/*向下
+<span class="triangle_border_down"></span>
+*/
+.triangle_border_down{
+    display:block;
+    width:0;
+    height:0;
+    border-width:5px 5px 0;
+    border-style:solid;
+    border-color:#ccc transparent transparent;
+    position:absolute;
+    top:0;
+    left:0;
+}
+/*向左
+<span class="triangle_border_left"></span>
+*/
+.triangle_border_left{
+    display:block;
+    width:0;
+    height:0;
+    border-width:5px 5px 5px 0;
+    border-style:solid;
+    border-color:transparent #ccc transparent transparent;
+    position:absolute;
+    top:0;
+    left:0;
+}
+/*向右
+<span class="triangle_border_right"></span>
+*/
+.triangle_border_right{
+    display:block;
+    width:0;
+    height:0;
+    border-width:5px 0 5px 5px;
+    border-style:solid;
+    border-color:transparent transparent transparent #ccc;
+    position:absolute;
+    top:0;
+    left:0;
+}

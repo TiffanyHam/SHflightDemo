@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>填写电子托运书</title>
+		<link rel="stylesheet" href="../css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<style type="text/css">
+			/*表单验证提示框修改*/
+			
+			/*.weui-dialog__bd {
+				color: #F43530;
+				min-height: 0px;
+			}*/
+			
+			.weui-dialog__title {
+				display: none;
+			}
+			.weui-cell input{
+				color:#333;
+			}
+		</style>
+	</head>
+
+	<body ontouchstart>
+		<div class="weui-cells t-center mgr_bottom" style="margin-top:0;">
+			<a class="weui-cell weui-cell_access" href="send.html">
+				<div class="weui-cell__ft weui-cell__fl left_arow"></div>
+				<div class="weui-cell__bd">
+					<p>托运人信息</p>
+				</div>
+			</a>
+		</div>
+
+		<div class="weui-cells weui-cells_form  cells_top">
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label"><b>*</b>&nbsp;&nbsp;托运人</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input must" type="text" id="sendName" value="" placeholder="请输入托运人"></div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">&nbsp;&nbsp;&nbsp;协议编号</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="text" id="sendCNumber" value="" placeholder="请输入协议编号"></div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label"><b>*</b>&nbsp;&nbsp;电话</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input must" type="tel" id="sendTel" value=""  placeholder="请输入联系方式"></div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label"><b>*</b>&nbsp;&nbsp;详细地址</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input must" type="text" id="sendAddr" value=""  placeholder="请输入地址"></div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">&nbsp;&nbsp;&nbsp;邮编</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="number" id="sendPostcode" value=""  placeholder="请输入邮编"></div>
+			</div>
+			
+		</div>
+			
+		<div class="weui-btn-area">
+			<a class="weui-btn weui-btn_primary" href="#" id="saveSend">保存</a>
+		</div>
+
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-weui.min.js"></script>
+	<script src="../js/storage.js"></script>
+	<script>
+		var flag = true; //是否全部输入  默认true
+
+		$('#saveSend').bind('click', function() {
+			/*$(".must").each(function() {
+				if($(this).val() == "") {
+					flag = false; //有空格未输入，将flag置为false
+				}
+			});*/
+
+			/*带*必填项验证*/
+			if($("#sendName").val() == "" || $("#sendTel").val() == "" || $("#sendAddr").val() == "" ) {
+				$.alert('<i class="weui-icon-warn"></i>带*为必填项');
+			} 
+			/*else if(!flag) {
+				$.alert('<i class="weui-icon-warn"></i>部分信息未完善，请确认后提交');
+			} */
+			else {
+			
+				$.alert({
+				  title: '',
+				  text: '<i class="weui-icon-success"></i> 保存成功！',
+				  onOK: function () {
+					//点击确认
+					
+					
+					var sender = [{
+						key: 'name',
+						value: $("#sendName").val()
+					},{
+						key: 'cNumber',
+						value: $("#sendCNumber").val()
+					},{
+						key: 'phone',
+						value: $("#sendTel").val()
+					},{
+						key: 'address',
+						value: $("#sendAddr").val()
+					},{
+						key: 'postcode',
+						value: $("#sendPostcode").val()
+					}];
+					
+					//添加进本地存储
+					var sendJson = getStorage("sendJson");
+					if (sendJson != null && sendJson != "") {
+						//字符串转对象
+						var temp = toJsonObj(sendJson);
+							temp.sender = sender;
+							
+						//对象转字符串
+						sendJson = toJsonString(temp);
+						
+					} else {
+						sendJson = {};
+						sendJson["sender"] = sender;
+						sendJson = toJsonString(sendJson);
+					}
+					var isCall = saveStorage("sendJson", sendJson);
+					
+					//返回填写电子单
+					if (isCall == false) {
+						
+					} else {
+						window.location.href = "send.html";
+					}
+					
+					
+				  }
+				});
+
+			}
+		});
+	</script>
+
+</html>

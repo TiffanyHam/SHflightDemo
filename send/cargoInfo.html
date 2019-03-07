@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>填写电子托运书</title>
+		<link rel="stylesheet" href="../css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+		<style type="text/css">
+			.weui-label {
+				width: 135px
+			}
+			/*表单验证提示框修改*/
+			
+			/*.weui-dialog__bd {
+				color: #F43530;
+				min-height: 0px;
+			}*/
+			
+			.weui-dialog__title {
+				display: none;
+			}
+			.weui-input{
+				color:#333;
+			}
+		</style>
+	</head>
+
+	<body ontouchstart>
+		<div class="weui-cells t-center mgr_bottom" style="margin-top:0;">
+			<a class="weui-cell weui-cell_access" href="send.html" id="blackBtn">
+				<div class="weui-cell__ft weui-cell__fl left_arow"></div>
+				<div class="weui-cell__bd">
+					<p>货物信息</p>
+				</div>
+			</a>
+		</div>
+
+		<div class="weui-cells weui-cells_form cells_top mgr_bottom">
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label"><b>*</b>&nbsp;&nbsp;货物品名</label></div>
+				<div class="weui-cell__bd bd">
+					<input class="weui-input" type="text" id="detailName" value="" placeholder="请输入货物详细品名">
+				</div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd">
+					<label class="weui-label"><b>*</b>&nbsp;&nbsp;件数</label>
+				</div>
+				<div class="weui-cell__bd bd">
+					<input class="weui-input" type="number" id="num" pattern="[0-9]*" value="" placeholder="请输入货物件数">
+				</div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">&nbsp;&nbsp;&nbsp;&nbsp;重量</label></div>
+				<div class="weui-cell__bd bd"><input class="weui-input" type="text" id="goodsH" pattern="[0-9]*" value=""  placeholder="100.0" style="width: 90%;">KG</div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label"><b>*</b>&nbsp;&nbsp;包装</label></div>
+				<div class="weui-cell__bd bd">
+					<p><input type="text" id='packSelect' value="" class="weui-input" value="" placeholder="请选择包装" /></p>
+				</div>
+			</div>
+		</div>
+		
+		<div class="weui-cells weui-cells_form cells_top">
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">&nbsp;&nbsp;&nbsp;&nbsp;运输声明价值</label></div>
+				<div class="weui-cell__bd bd">
+					<input class="weui-input" type="text" id="count" value="" placeholder="无">
+				</div>
+			</div>
+
+			<div class="weui-cell">
+				<div class="weui-cell__hd hd"><label class="weui-label">&nbsp;&nbsp;&nbsp;&nbsp;是否投保</label></div>
+				<div class="weui-cell__bd bd">
+					<input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+				</div>
+			</div>
+
+		</div>
+
+		<div class="weui-btn-area">
+			<a class="weui-btn weui-btn_primary" href="#" id="confirmInfo">确定</a>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-weui.min.js"></script>
+	<script src="../js/city-picker.js" charset="utf-8"></script>
+	<script src="../js/storage.js"></script>
+	<script>
+		
+		$('#confirmInfo').bind('click', function() {
+			var flag = true;
+			
+			/*带*必填项验证*/
+			if ($("#detailName").val() == "" || $("#num").val() == "" || $("#packSelect").val() == "") {
+				$.alert('<i class="weui-icon-warn"></i> 带*为必填项');
+				flag = false;
+				return false;
+			}
+			
+			/*小数点验证*/
+			if ($("#goodsH").val() != "") {
+				if (!NumberCheck($("#goodsH").val())) {
+					$.alert('<i class="weui-icon-warn"></i> 格式有误，精确到小数点后一位');
+					flag = false;
+					return false;
+				}
+			}
+			
+			/*字符长度验证*/
+			if ($("#detailName").val().length > 50) {
+				$.alert('<i class="weui-icon-warn"></i> 货物品名不能超过50个字符');
+				flag = false;
+				return false;
+			}
+			
+			if (flag == true) {
+			
+				$.alert({
+				  title: '',
+				  text: '<i class="weui-icon-success"></i> 保存成功！',
+				  onOK: function () {
+					
+					//是否投保
+					if ($("#weuiAgree").is(':checked')) {
+						$("#weuiAgree").val("1");
+					} else {
+						$("#weuiAgree").val("0");
+					}
+					
+					var cargoInfo = [{
+						key: 'detailName',
+						value: $("#detailName").val()
+					},{
+						key: 'num',
+						value: $("#num").val()
+					},{
+						key: 'goodsH',
+						value: $("#goodsH").val()
+					},{
+						key: 'packSelect',
+						value: $("#packSelect").val()
+					},{
+						key: 'count',
+						value: $("#count").val()
+					},{
+						key: 'weuiAgree',
+						value: $("#weuiAgree").val()
+					}]
+				
+					
+					//添加进本地存储
+					var sendJson = getStorage("sendJson");
+					if (sendJson != null && sendJson != "") {
+						//字符串转对象
+						var temp = toJsonObj(sendJson);
+							temp.cargoInfo = cargoInfo;
+							
+						//对象转字符串
+						sendJson = toJsonString(temp);
+						
+					} else {
+						sendJson = {};
+						sendJson["cargoInfo"] = cargoInfo;
+						sendJson = toJsonString(sendJson);
+					}
+					var isCall = saveStorage("sendJson", sendJson);
+					
+					//返回填写电子单
+					if (isCall == false) {
+						
+					} else {
+						window.location.href = "send.html";
+					}
+					
+					
+				  }
+				})
+			}
+
+		});
+		
+		
+		//精确到小数点后一位
+		function NumberCheck(num) {
+			var re = /^\d*\.{0,1}\d{0,1}$/;
+			return re.exec(num) != null;
+		}
+		
+
+		//包装
+		$("#packSelect").select({
+			title: "",
+			multi: true,
+			items: [{
+					title: "木托",
+					value: 1
+				},
+				{
+					title: "纸箱",
+					value: 2
+				}
+			]
+		});
+		
+		//blackBtn
+		//title 
+		function GetQueryString(name) {
+			 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			 var r = window.location.search.substr(1).match(reg);
+			 if(r!=null)return  unescape(r[2]); return null;
+		}
+		
+		function init() {
+			var href = "";
+			var prama = GetQueryString("cargo");
+			if (prama == "1") {
+				href = "serchInfo/sendComplete.html?title=info";
+			} else if (prama == "2") {
+				href = "serchInfo/sendComplete.html?title=update&&isUpdate=no";
+			} else if (prama == "3") {
+				href = "serchInfo/sendComplete.html?title=update&&isUpdate=yes";
+			} else {
+				href = "send.html";
+			}
+			
+			$("#blackBtn").attr("href", ""+href+"");
+		}
+		
+		init();
+	</script>
+
+</html>

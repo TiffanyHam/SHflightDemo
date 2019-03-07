@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>填写电子托运书</title>
+		<link rel="stylesheet" href="../css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<style type="text/css">
+			.weui-cell input{
+				color:#333;
+			}
+		</style>
+	</head>
+	<body ontouchstart>
+		<div class="weui-cells t-center mgr_bottom" style="margin-top:0;">
+			<a class="weui-cell weui-cell_access" href="mine.html">
+				<div class="weui-cell__ft weui-cell__fl left_arow"></div>
+				<div class="weui-cell__bd">
+				  <p>修改密码</p>
+				</div>
+			</a>
+		</div>
+		
+		<div class="weui-cells weui-cells_form cells_top">
+		
+		  <div class="weui-cell">
+			<div class="weui-cell__hd hd"><label class="weui-label">旧密码</label></div>
+			<div class="weui-cell__bd bd">
+			  <input class="weui-input" type="password" id="oldPsw" value="" placeholder="请输入旧密码">
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">
+			<div class="weui-cell__hd hd">
+			  <label class="weui-label">新密码</label>
+			</div>
+			<div class="weui-cell__bd bd">
+			  <input class="weui-input" type="password" id="newPsw" value="" placeholder="请输入新密码">
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">
+			<div class="weui-cell__hd hd"><label class="weui-label">确认新密码</label></div>
+			<div class="weui-cell__bd bd">
+			  <input class="weui-input" type="password" id="reNewPsw"  value="" placeholder="请再次输入新密码">
+			</div>
+		  </div>
+		  
+
+		</div>
+		
+		<div class="weui-flex" style="margin-top:20px;">
+			<div class="weui-flex__item">
+				<a href="javascript:;" class="weui-btn weui-btn_primary b-wEit" id="savePsw">确定</a>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-weui.min.js"></script>
+	<script src="../js/storage.js"></script>
+	<script>
+
+		//保存
+		$("#savePsw").bind("click", function() {
+		
+			if($("#newPsw").val() == "" || $("#oldPsw").val() == "" || $("#reNewPsw").val() == "" ) {
+				$.alert('<i class="weui-icon-warn"></i> 密码不能为空！');
+			} else {
+			
+				$.alert({
+				  title: '',
+				  text: '<i class="weui-icon-success"></i> 修改成功！',
+				  onOK: function () {
+					//点击确认
+					
+					window.location.href = "login.html";
+				  }
+				})
+
+			}
+			
+			
+		});
+	</script>
+</html>

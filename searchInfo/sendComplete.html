@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>填写电子托运书</title>
+		<link rel="stylesheet" href="../css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<style>
+		.weui-prompt-input{width:100%;}
+		.weui-agree__checkbox{background:#2593b8;border: none;}
+		.weui-agree__checkbox:checked:before{color:#fff;}
+		.weui-agree{font-size:14px;}
+		.desti{color: #333;font-size: 20px;}
+		.weui-dialog__title {font-size: 16px;}
+		.weui-dialog__bd {color: #333;font-size: 14px;line-height: 1.5;}
+		
+		</style>
+	</head>
+	<body ontouchstart>
+		<div id="sendContent" style="width:100%;height:80%;overflow:scroll;">
+			<div class="weui-cells t-center" style="margin-top:0;margin-bottom:10px;">
+			<a class="weui-cell weui-cell_access" href="searchInfo.html">
+				<div class="weui-cell__ft weui-cell__fl left_arow"></div>
+				<div class="weui-cell__bd">
+				  <p id="title"></p>
+				</div>
+			</a>
+		</div>
+			<div class="weui-cells weui-cells_form sendAddr t-center">
+				<div class="weui-flex" style="padding-top: 10px;">
+				  <div class="weui-flex__item"><a href="cityChoose.html?city=start" class="desti">深圳</a></div>
+				  <div class="weui-flex__item"><img src="../images/fly.png"/ style="vertical-align: top;margin-top: 13px;"></div>
+				  <div class="weui-flex__item"><a href="cityChoose.html?city=end" class="desti">目的站</a></div>
+				</div>
+			</div>
+			
+			<div class="weui-cells">
+			 <a class="weui-cell weui-cell_access" href="sender.html">
+				<div class="weui-cell__bd">
+				  <p class="box_tel"><i class="weui-icon-send">寄</i>深圳市联运快递有限公司</p>
+				</div>
+				<div class="weui-cell__ft">
+				</div>
+			  </a>
+			  <a class="weui-cell weui-cell_access" href="consignee.html">
+				<div class="weui-cell__bd">
+				  <p class="box_tel"><i class="weui-icon-receiver">收</i>点击添加收货信息</p>
+				</div>
+				<div class="weui-cell__ft">
+				</div>
+			  </a>
+			</div>
+			
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="cargoInfo.html" id="cargo">
+					<div class="weui-cell__bd">
+					  <p class="box_tel">货物信息<span id="goodInfo"></span></p>
+					  <p class="weui-agree__text box_tel padd-tb">茶叶、烟酒、罐头、零食..</p>
+					</div>
+					<div class="weui-cell__ft">
+					</div>
+				 </a>
+			</div>
+			
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;" onclick="announcements()">
+					<div class="weui-cell__bd">
+					  <p class="box_tel">存储注意事项</p>
+					</div>
+					<div class="weui-cell__ft">
+					</div>
+				  </a>
+			</div>
+			
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;">
+					<div class="weui-cell__bd">
+					  <p class="box_tel"><input type="text" id='transport-picker' value="运输类型" class="weui-input"/></p>
+					</div>
+					<div class="weui-cell__ft">
+					</div>
+				  </a>
+			</div>
+			
+			<div class="weui-cells">
+				<div class="weui-flex">
+				  <div class="weui-flex__item">
+					  <a class="weui-cell weui-cell_access" href="javascript:;">
+						<div class="weui-cell__bd">
+						  <p class="box_tel"><input type="text" id='pick_up-picker' value="提货方式" class="weui-input"/></p>
+						  
+						</div>
+						<div class="weui-cell__ft">
+						</div>
+					  </a>
+				  </div>
+				  <div class="weui-flex__item">
+					  <a class="weui-cell weui-cell_access" href="javascript:;">
+						<div class="weui-cell__bd">
+						  <p class="box_tel"><input type="text" id='pay_way-picker' value="付款方式" class="weui-input"/></p>
+						</div>
+						<div class="weui-cell__ft">
+						</div>
+					  </a>
+				  </div>
+				</div>
+			</div>
+			
+			<div>
+				<div class="weui-flex" style="padding:10px 0;">
+					<div class="weui-flex__item t-right">
+						<label for="weuiAgree" class="weui-agree">
+							<input id="weuiAgree" type="checkbox" class="weui-agree__checkbox" checked>
+							<span class="weui-agree__text">已阅读并同意</span>
+						</label>
+					</div>
+					<div class="weui-flex__item t-left termLink">
+						<a href="javascript:void(0);" onclick="termSheet()">《托运须知》</a>
+					</div>
+				</div>
+				
+				<div class="weui-flex" id="search_info" style="display:none">
+					<div class="weui-flex__item">
+						<a href="javascript:;" class="weui-btn weui-btn_plain-primary b-wEit" onclick="saveSend()">预存信息</a>
+					</div>
+					<div class="weui-flex__item">
+						<a href="javascript:;" class="weui-btn weui-btn_primary b-wEit" id="confirmSend" onclick="confirmSend()">立即提交</a>
+					</div>
+				</div>
+				
+				<div class="weui-flex" id="search_update" style="display:none">
+					<div class="weui-flex__item">
+						<a href="javascript:;" class="weui-btn weui-btn_warn b-wEit" onclick="">撤销托运书</a>
+					</div>
+					<div class="weui-flex__item">
+						<a href="javascript:;" class="weui-btn weui-btn_primary b-wEit" onclick="">保存修改</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!--底部导航-->
+		<footer>
+			<div class="weui-tabbar">
+				<a href="../send/send.html" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<img src="../images/send.png" alt="">
+					</div>
+					<p class="weui-tabbar__label">我要寄件</p>
+				</a>
+				<a href="../searchInfo/searchInfo.html" class="weui-tabbar__item  weui-bar__item_on">
+					<div class="weui-tabbar__icon">
+						<img src="../images/nav_travel_chk.png" alt="">
+					</div>
+					<p class="weui-tabbar__label">信息查询</p>
+				</a>
+				<a href="../mine/mine.html" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<img src="../images/mine.png" alt="">
+					</div>
+					<p class="weui-tabbar__label">我的</p>
+				</a>
+
+			</div>
+			</div>
+		</footer>
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-weui.min.js"></script>
+	<script src="../js/city-picker.js" charset="utf-8"></script>
+	<script>
+		//页面高度
+		var d = document.documentElement.clientHeight;
+		//alert(d);
+		$("#sendContent").css({"height":""+(d-53)+"px"});
+		
+		//运输类型
+		$("#transport-picker").picker({
+		  title: "",
+		  cols: [
+			{
+			  textAlign: 'center',
+			  values: ['非限时运输', '指定航班']
+			}
+		  ]
+		});
+		
+		//提货方式
+		$("#pick_up-picker").picker({
+		  title: "",
+		  cols: [
+			{
+			  textAlign: 'center',
+			  values: ['市内自提', '机场自提', '送货上门']
+			}
+		  ]
+		});
+		
+		//付款方式
+		$("#pay_way-picker").picker({
+		  title: "",
+		  cols: [
+			{
+			  textAlign: 'center',
+			  values: ['到付','预付','现金','支票']
+			}
+		  ]
+		});
+		
+		//托运须知
+		function termSheet() {
+			
+			var str = "<div style='text-align:left;'>1、深航货物运输遵守《中华人民共和国民用航空法》、《中国民用航空国内货物运输规则》的有关规定。<br/>"+
+					  "2、托运人应如实申报具体品名，并保证不在货物包装内夹带危险品、政府禁止和限制运输的物品、贵重物品、保密文件和资料等。<br/>"+
+					  "3、托运人应该按航空运输要求妥善包装货物。<br/>"+
+					  "4、托运人托运的货物没有办理声明价值的，货物在运输过程中发生破损、短少、丢失时，承运人按照实际损失的价值进行赔偿，但赔偿最高限额为毛重每公斤人民币100元。</div>";
+			
+			$.alert({
+			  title: '《托运须知》',
+			  text: str,
+			  onOK: function () {
+				//点击确认
+			  }
+			});
+		}
+		
+		//运输注意事项
+		function announcements() {
+			$.prompt({
+			  title: '储运注意事项',
+			  text: '',
+			  input: '点击此处编辑',
+			  textarea: '',
+			  empty: true, // 是否允许为空
+			  onOK: function (input) {
+				//点击确认
+			  },
+			  onCancel: function () {
+				//点击取消
+			  }
+			});
+		}
+		
+		
+		//预存信息
+		function saveSend() {
+			//$.alert("保存成功！");
+			$.alert({
+			  title: '',
+			  text: '<i class="weui-icon-success"></i> 保存成功！',
+			  onOK: function () {
+				//点击确认
+			  }
+			});
+		}
+		//立即提交
+		function confirmSend() {
+			//如果参数过多，建议通过 object 方式传入
+			$.confirm({
+			  title: '<i class="weui-icon-info"></i> 确定提交本订单？',
+			  text: '',
+			  onOK: function () {
+				//点击确认
+			  },
+			  onCancel: function () {
+			  }
+			});
+		}
+		
+		
+		//title 
+		function GetQueryString(name) {
+			 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			 var r = window.location.search.substr(1).match(reg);
+			 if(r!=null)return  unescape(r[2]); return null;
+		}
+		
+		function init() {
+			var title = "";
+			var prama = GetQueryString("title");
+			if (prama == "info") {
+				title = '完善信息';
+				$("#search_update").hide(); //隐藏修改信息
+				$("#search_info").show();
+				$("#cargo").attr("href", "cargoInfo.html?cargo=1");
+				
+			} else if (prama == "update") {
+				title = '修改信息';
+				$("#search_update").show(); //隐藏完善信息
+				$("#search_info").hide();
+				
+				var isUpdate = GetQueryString("isUpdate");
+				if (isUpdate == "no") {
+					$("#goodInfo").append('<span class="c_status c_gray">未复重</span>');
+					$("#cargo").attr("href", "cargoInfo.html?cargo=2");
+				} else if (isUpdate == "yes") {
+					$("#goodInfo").append('<a href="goodsInfo.html"><span class="c_status c_yellow">已复重</p></span>');
+					$("#cargo").attr("href", "cargoInfo.html?cargo=3");
+				}
+				
+			} 
+			$("#title").text(title);
+		}
+		init();
+	</script>
+</html>

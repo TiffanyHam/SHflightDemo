@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>填写电子托运书</title>
+		<link rel="stylesheet" href="../css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+	</head>
+	<body ontouchstart>
+		<div class="weui-cells t-center" style="margin-top:0;">
+			<a class="weui-cell weui-cell_access" href="send.html">
+				<div class="weui-cell__ft weui-cell__fl left_arow"></div>
+				<div class="weui-cell__bd">
+				  <p id="title"></p>
+				</div>
+			</a>
+		</div>
+		
+		<!--search-->
+		<div class="weui-search-bar" id="searchBar">
+		  <form class="weui-search-bar__form">
+			<div class="weui-search-bar__box">
+			  <i class="weui-icon-search"></i>
+			  <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+			  <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+			</div>
+			<label class="weui-search-bar__label" id="searchText">
+			  <i class="weui-icon-search"></i>
+			  <span>搜索</span>
+			</label>
+		  </form>
+		  <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+		</div>
+
+		<div class="page__bd">
+			<div class="weui-cells__title">当前城市</div>
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;">
+					<div class="weui-cell__bd">
+					  <p style="padding-left:15%;" class="cityChoose">深圳</p>
+					</div>
+				 </a>
+			</div>
+			<div class="weui-cells__title">热门城市</div>
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;">
+					<div class="weui-cell__bd">
+					  <p>
+					  <span class="cityLable cityChoose">厦门</span><span class="cityLable cityChoose">成都</span><span class="cityLable cityChoose">香港</span>
+					  <span class="cityLable cityChoose">广州</span><span class="cityLable cityChoose">上海</span><span class="cityLable cityChoose">拉萨</span>
+					  </p>
+					</div>
+				 </a>
+			</div>
+			
+			<div>
+				<div class="weui-cells__title">A</div>
+				<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;">
+					<div class="weui-cell__bd">
+					  <p>
+						<label class="weui-cell weui-check__label cityChoose">阿尔山</label>
+						<label class="weui-cell weui-check__label cityChoose">阿尔山</label>
+						<label class="weui-cell weui-check__label cityChoose">阿尔山</label>
+						<label class="weui-cell weui-check__label cityChoose">阿尔山</label>
+					  </p>
+					</div>
+				 </a>
+				</div>
+			</div>
+			<div>
+				<div class="weui-cells__title">B</div>
+				<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;">
+					<div class="weui-cell__bd">
+					  <p>
+						<label class="weui-cell weui-check__label cityChoose">白城</label>
+						<label class="weui-cell weui-check__label cityChoose">白城</label>
+						<label class="weui-cell weui-check__label cityChoose">白城</label>
+						<label class="weui-cell weui-check__label cityChoose">白城</label>
+					  </p>
+					</div>
+				 </a>
+				</div>
+			</div>
+			<div>
+				<div class="weui-cells__title">C</div>
+				<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;">
+					<div class="weui-cell__bd">
+					  <p>
+						<label class="weui-cell weui-check__label cityChoose">成都</label>
+						<label class="weui-cell weui-check__label cityChoose">成都</label>
+						<label class="weui-cell weui-check__label cityChoose">成都</label>
+						<label class="weui-cell weui-check__label cityChoose">成都</label>
+					  </p>
+					</div>
+				</a>
+				</div>
+			</div>
+			
+			
+			
+			
+        </div>
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-weui.min.js"></script>
+	<script src="../js/storage.js"></script>
+	<script>
+		//title 
+		function GetQueryString(name) {
+			 var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+			 var r = window.location.search.substr(1).match(reg);
+			 if(r!=null)return  unescape(r[2]); return null;
+		}
+		
+		function init() {
+			var title = "";
+			var city = GetQueryString("city");
+			if (city == "start") {
+				title = "始发站";
+			} else if (city == "end") {
+				title = "目的站";
+			}
+			
+			$("#title").text(""+title+"");
+		}
+		
+		//cityChoose
+		$(".cityChoose").on("click", function() {
+			//获取城市名
+			var cTXT = $(this).text();
+			//存储城市名
+			var isCall = saveStorage("destination", cTXT);
+			//返回填写电子单
+			if (isCall == false) {
+				window.location.href = "send.html?destination="+cTXT;
+			} else {
+				window.location.href = "send.html";
+			}
+			
+		});
+		
+		
+		init();
+	</script>
+</html>

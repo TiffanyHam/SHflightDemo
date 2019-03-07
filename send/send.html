@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>填写电子托运书</title>
+		<link rel="stylesheet" href="../css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<style>
+		.weui-cells{margin-top:10px;}
+		.sendAddr {margin-top: 0;line-height: 2.411765;}
+		.weui-prompt-input{width:100%;}
+		.weui-agree__checkbox{background:#2593b8;border: none;}
+		.weui-agree__checkbox:checked:before{color:#fff;}
+		.weui-agree{font-size:14px;}
+		.desti{color: #333;font-size: 20px;}
+		.weui-dialog__title {font-size: 16px;}
+		.weui-dialog__bd {color: #333;font-size: 14px;line-height: 1.5;}
+		.labelName{display:inline-block;width:30%;}
+		.labelValue{width:65%;}
+		
+		</style>
+	</head>
+	<body ontouchstart>
+		<div class="weui-cells weui-cells_form sendAddr t-center">
+			<div class="weui-flex" style="padding-top: 10px;">
+			  <div class="weui-flex__item"><!--<a href="cityChoose.html?city=start" class="desti">深圳</a>-->
+				<a href="#" class="desti">深圳</a>
+			  </div>
+			  <div class="weui-flex__item"><img src="../images/fly.png"/ style="vertical-align: top;margin-top: 13px;"></div>
+			  <div class="weui-flex__item p-relative">
+				<a href="cityChoose.html?city=end" class="desti" id="destination">目的站</a> 
+			  </div>
+			</div>
+		</div>
+		
+		<div id="sendContent" style="width:100%;">
+			<div class="weui-cells">
+			 <a class="weui-cell weui-cell_access" href="sender.html">
+				<div class="weui-cell__bd">
+				  <p class="box_tel"><i class="weui-icon-send">寄</i><span id="sender">深圳市联运快递有限公司</span></p>
+				</div>
+				<div class="weui-cell__ft">
+				</div>
+			  </a>
+			  <a class="weui-cell weui-cell_access" href="consignee.html">
+				<div class="weui-cell__bd">
+				  <p class="box_tel"><i class="weui-icon-receiver">收</i><span id="consignee">点击添加收货信息</span></p>
+				</div>
+				<div class="weui-cell__ft">
+				</div>
+			  </a>
+			</div>
+			
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="cargoInfo.html">
+					<div class="weui-cell__bd">
+					  <p class="box_tel">货物信息</p>
+					  <p class="weui-agree__text box_tel padd-tb" id="cargoInfo"></p>
+					</div>
+					<div class="weui-cell__ft">
+					</div>
+				  </a>
+			</div>
+			
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;" onclick="announcements()">
+					<div class="weui-cell__bd">
+					  <p class="box_tel">存储注意事项</p>
+					   <p class="weui-agree__text box_tel padd-tb" id="attention"></p>
+					</div>
+					<div class="weui-cell__ft">
+					</div>
+				  </a>
+			</div>
+			
+			<div class="weui-cells">
+				<a class="weui-cell weui-cell_access" href="javascript:;">
+					<div class="weui-cell__bd">
+					  <p class="box_tel"><span class="labelName">运输类型</span><input type="text" id='transport-picker' value="" class="weui-input labelValue"/></p>
+					</div>
+					<div class="weui-cell__ft">
+					</div>
+				  </a>
+			</div>
+			
+			<div class="weui-cells">
+			  <a class="weui-cell weui-cell_access" href="javascript:;">
+				<div class="weui-cell__bd">
+				  <p class="box_tel"><span class="labelName">提货方式</span><input type="text" id='pick_up-picker' value="" class="weui-input labelValue"/></p>
+				  
+				</div>
+				<div class="weui-cell__ft">
+				</div>
+			  </a>
+		    </div>
+			
+			<div class="weui-cells">
+			  <a class="weui-cell weui-cell_access" href="javascript:;">
+				<div class="weui-cell__bd">
+				  <p class="box_tel"><span class="labelName">付款方式</span><input type="text" id='pay_way-picker' value="" class="weui-input labelValue"/></p>
+				</div>
+				<div class="weui-cell__ft">
+				</div>
+			  </a>
+			</div>
+			
+			<div>
+				<div class="weui-flex" style="padding:10px 0;">
+					<div class="weui-flex__item t-right">
+						<label for="weuiAgree" class="weui-agree">
+							<input type="checkbox" checked="checked" id="weuiAgree"  class="weui-agree__checkbox" onclick="checkedClause(this, 'confirmSend')">
+							<span class="weui-agree__text">已阅读并同意</span>
+						</label>
+					</div>
+					<div class="weui-flex__item t-left termLink">
+						<a href="javascript:void(0);" onclick="termSheet()">《托运须知》</a>
+					</div>
+				</div>
+				
+				<div class="weui-flex">
+					<div class="weui-flex__item">
+						<a href="javascript:;" class="weui-btn weui-btn_plain-primary b-wEit" onclick="saveSend()">预存信息</a>
+					</div>
+					<div class="weui-flex__item">
+						<a href="javascript:;" class="weui-btn weui-btn_primary b-wEit" id="confirmSend" onclick="confirmSend()">立即提交</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<!--底部导航-->
+		<footer>
+			<div class="weui-tabbar">
+                <a href="../send/send.html" class="weui-tabbar__item weui-bar__item_on">
+                    <span style="display: inline-block;position: relative;">
+                        <img src="../images/send_chk.png" alt="" class="weui-tabbar__icon">
+                    </span>
+                    <p class="weui-tabbar__label foot_txt">我要寄件</p>
+                </a>
+                <a href="../searchInfo/searchInfo.html" class="weui-tabbar__item">
+                    <img src="../images/nav_travel.png" alt="" class="weui-tabbar__icon">
+                    <p class="weui-tabbar__label">信息查询</p>
+                </a>
+                <a href="../mine/mine.html" class="weui-tabbar__item">
+                    <span style="display: inline-block;position: relative;">
+                        <img src="../images/mine.png" alt="" class="weui-tabbar__icon">
+                    </span>
+                    <p class="weui-tabbar__label">我的</p>
+                </a>
+            </div>
+		</footer>
+	</body>
+	<script src="../js/jquery.min.js" charset="utf-8"></script>
+	<script src="../js/jquery-weui.min.js" charset="utf-8"></script>
+	<script src="../js/city-picker.js" charset="utf-8"></script>
+	<script src="../js/storage.js" charset="utf-8"></script>
+	<script src="../js/send.js" charset="utf-8"></script>
+	<script>
+		
+		
+	</script>
+</html>

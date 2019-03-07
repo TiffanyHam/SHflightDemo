@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>电子托运书查询</title>
+		<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<link rel="stylesheet" type="text/css" href="../css/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/common.css" />
+	</head>
+
+	<body ontouchstart>
+		<!--头部-->
+		<header class="search_head">
+			<div class="weui-cells t-center" style="margin-top:0;">
+				<a class="weui-cell weui-cell_access" href="#">
+					<!--<div class="weui-cell__ft weui-cell__fl left_arow"></div>-->
+					<div class="weui-cell__bd">
+						<p>信息查询</p>
+					</div>
+				</a>
+			</div>
+			<!--状态栏-->
+			<div class="weui-mask bg_round" style="display: none;"></div>
+			<div class="leftMenu clearfix">
+				<div class="menu_list">
+					<ul>
+						<li>
+							<p class="fuMenu">目的地<img class="xiala" src="../images/slow_gray.png"></p>
+
+							<div class="div1">
+								<p class="zcd" id="zcd1">厦门</p>
+								<p class="zcd" id="zcd2">深圳</p>
+								<p class="zcd" id="zcd3">北京</p>
+								<p class="zcd" id="zcd4">上海</p>
+								<p class="zcd" id="zcd5">厦门</p>
+								<p class="zcd" id="zcd6">深圳</p>
+								<p class="zcd" id="zcd7">北京</p>
+								<p class="zcd" id="zcd8">上海</p>
+								<p class="zcd" id="zcd9">厦门</p>
+								<p class="zcd" id="zcd10">深圳</p>
+								<p class="zcd" id="zcd11">北京</p>
+								<p class="zcd" id="zcd12">上海</p>
+								
+							</div>
+						</li>
+						<li>
+							<p class="fuMenu">状态<img class="xiala" src="../images/slow_gray.png"></p>
+
+							<div class="div1 div2">
+								<p class="zcd" id="zcd17">全部</p>
+								<p class="zcd" id="zcd13">未提交</p>
+								<p class="zcd" id="zcd14">未复重</p>
+								<p class="zcd" id="zcd15">已复重</p>
+								<p class="zcd" id="zcd16">已制单</p>
+
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</header>
+		<section>
+
+			<!--列表信息栏-->
+			<a href="../searchInfo/sendComplete.html?title=info"><div class="weui-panel__ft panel_part" style="margin-top:10px;">
+				<div class="weui-cell weui-cell_access weui-cell_txt">
+					<p class="weui-cell__bd ">收货人：李四（2018/06/20）</p>
+					<p class="weui-cell__bd make_dam_o c_red">未提交</p>
+				</div>
+				<div class="weui-flex weui-models">
+					<div class="weui-flex__item">深圳</div>
+					<div class="weui-flex__item2">
+						<p class="arrow_text">茶叶，罐头...</p>
+						<p class="arrow-right"><span class="triangle_border_right"></span></p>
+						<p class="arrow_text">10件，木托...</p>
+					</div>
+					<div class="weui-flex__item">北京</div>
+				</div>
+			</div>
+			</a>
+
+			<a href="../searchInfo/sendComplete.html?title=update&&isUpdate=no">
+			<div class="weui-panel__ft panel_part">
+				<div class="weui-cell weui-cell_access weui-cell_txt">
+					<p class="weui-cell__bd ">收货人：李四（2018/06/20）</p>
+					<p class="weui-cell__bd make_dam_o c_gray">未复重</p>
+
+				</div>
+				<div class="weui-flex weui-models">
+					<div class="weui-flex__item">深圳</div>
+					<div class="weui-flex__item2">
+						<div class="weui-flex__item">
+						<p class="arrow_text">茶叶，罐头...</p>
+						<p class="arrow-right"><span class="triangle_border_left"></span></p>
+						<p class="arrow_text">10件，木托...</p>
+						</div>
+					</div>
+					<div class="weui-flex__item">北京</div>
+
+				</div>
+			</div>
+			</a>
+
+			<a href="../searchInfo/sendComplete.html?title=update&&isUpdate=yes">
+			<div class="weui-panel__ft panel_part">
+				<div class="weui-cell weui-cell_access weui-cell_txt">
+					<p class="weui-cell__bd ">收货人：李四（2018/06/20）</p>
+					<p class="weui-cell__bd make_dam_o c_yellow">
+						已复重
+					</p>
+				</div>
+				<div class="weui-flex weui-models">
+					<div class="weui-flex__item">深圳</div>
+					<div class="weui-flex__item2">
+						<div class="weui-flex__item">
+						<p class="arrow_text">茶叶，罐头...</p>
+						<p class="arrow-right"><span class="triangle_border_left"></span></p>
+						<p class="arrow_text">10件，木托...</p>
+						</div>
+					</div>
+					<div class="weui-flex__item">北京</div>
+
+				</div>
+			</div>
+			</a>
+			
+			<a href="../searchInfo/detailsInfo.html">
+			<div class="weui-panel__ft panel_part">
+				<div class="weui-cell weui-cell_access weui-cell_txt">
+					<p class="weui-cell__bd ">收货人：李四（2018/06/20）</p>
+					<p class="weui-cell__bd make_dam_o c_blue">
+						已制单
+					</p>
+
+				</div>
+				<div class="weui-flex weui-models">
+					<div class="weui-flex__item">深圳</div>
+					<div class="weui-flex__item2">
+						<div class="weui-flex__item">
+						<p class="arrow_text">茶叶，罐头...</p>
+						<p class="arrow-right"><span class="triangle_border_left"></span></p>
+						<p class="arrow_text">10件，木托...</p>
+					</div>
+					</div>
+					<div class="weui-flex__item">北京</div>
+
+				</div>
+			</div>
+			</a>
+			
+			<a href="../searchInfo/detailsInfo.html">
+			<div class="weui-panel__ft panel_part">
+				<div class="weui-cell weui-cell_access weui-cell_txt">
+					<p class="weui-cell__bd ">收货人：李四（2018/06/20）</p>
+					<p class="weui-cell__bd make_dam_o c_blue">
+						已制单
+					</p>
+
+				</div>
+				<div class="weui-flex weui-models">
+					<div class="weui-flex__item">深圳</div>
+					<div class="weui-flex__item2">
+						<div class="weui-flex__item">
+						<p class="arrow_text">茶叶，罐头...</p>
+						<p class="arrow-right"><span class="triangle_border_left"></span></p>
+						<p class="arrow_text">10件，木托...</p>
+					</div>
+					</div>
+					<div class="weui-flex__item">北京</div>
+
+				</div>
+			</div>
+			</a>
+			
+			<a href="../searchInfo/detailsInfo.html">
+			<div class="weui-panel__ft panel_part">
+				<div class="weui-cell weui-cell_access weui-cell_txt">
+					<p class="weui-cell__bd ">收货人：李四（2018/06/20）</p>
+					<p class="weui-cell__bd make_dam_o c_blue">
+						已制单
+					</p>
+
+				</div>
+				<div class="weui-flex weui-models">
+					<div class="weui-flex__item">深圳</div>
+					<div class="weui-flex__item2">
+						<div class="weui-flex__item">
+						<p class="arrow_text">茶叶，罐头...</p>
+						<p class="arrow-right"><span class="triangle_border_left"></span></p>
+						<p class="arrow_text">10件，木托...</p>
+					</div>
+					</div>
+					<div class="weui-flex__item">北京</div>
+
+				</div>
+			</div>
+			</a>
+
+
+		</section>
+		<!--底部-->
+		<footer>
+			<div class="weui-tabbar">
+				<a href="../send/send.html" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<img src="../images/send.png" alt="">
+					</div>
+					<p class="weui-tabbar__label">我要寄件</p>
+				</a>
+				<a href="../searchInfo/searchInfo.html" class="weui-tabbar__item  weui-bar__item_on">
+					<div class="weui-tabbar__icon">
+						<img src="../images/nav_travel_chk.png" alt="">
+					</div>
+					<p class="weui-tabbar__label foot_txt">信息查询</p>
+				</a>
+				<a href="../mine/mine.html" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<img src="../images/mine.png" alt="">
+					</div>
+					<p class="weui-tabbar__label">我的</p>
+				</a>
+
+			</div>
+			</div>
+		</footer>
+	</body>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jquery-weui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/menu.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var d = document.documentElement.clientHeight;
+		//alert(d);
+		$("section").css({"height":""+(d-112-53)+"px", "overflow":"auto", "position":"relative", "top":"112px"});
+	</script>
+</html>

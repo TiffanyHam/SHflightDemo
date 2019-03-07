@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+		<title>填写电子托运书</title>
+		<link rel="stylesheet" href="../css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<style type="text/css">
+			.weui-cell input{
+				color:#333;
+			}
+		</style>
+	</head>
+	<body ontouchstart>
+		<div class="weui-cells t-center mgr_bottom" style="margin-top:0;">
+			<a class="weui-cell weui-cell_access" href="send.html">
+				<div class="weui-cell__ft weui-cell__fl left_arow"></div>
+				<div class="weui-cell__bd">
+				  <p>收货人信息</p>
+				</div>
+			</a>
+		</div>
+		
+		<div class="weui-cells weui-cells_form cells_top">
+		
+		  <div class="weui-cell">
+			<div class="weui-cell__hd hd"><label class="weui-label"><b>*</b>&nbsp;&nbsp;姓名</label></div>
+			<div class="weui-cell__bd bd">
+			  <input class="weui-input must" type="text" id="name" value="" placeholder="请输入收货人姓名">
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">
+			<div class="weui-cell__hd hd">
+			  <label class="weui-label"><b>*</b>&nbsp;&nbsp;电话</label>
+			</div>
+			<div class="weui-cell__bd bd">
+			  <input class="weui-input must" type="tel" id="phone" value="" placeholder="请输入联系方式">
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">
+			<div class="weui-cell__hd hd"><label class="weui-label">&nbsp;&nbsp;&nbsp;&nbsp;邮编</label></div>
+			<div class="weui-cell__bd bd">
+			  <input class="weui-input" type="number" id="postcode" pattern="[0-9]*" value="" placeholder="请输入邮编">
+			</div>
+		  </div>
+		  
+		  <div class="weui-cell">
+			<div class="weui-cell__hd hd"><label class="weui-label"><b>*</b>&nbsp;&nbsp;地址</label></div>
+			<div class="weui-cell__bd bd">
+			  <input class="weui-input must" type="text" id="address" value="" placeholder="请输入地址">
+			</div>
+		  </div>
+
+		</div>
+		
+		<div class="weui-flex" style="margin-top:20px;">
+			<div class="weui-flex__item">
+				<a href="javascript:;" class="weui-btn weui-btn_plain-primary b-wEit" id="reset">重置</a>
+			</div>
+			<div class="weui-flex__item">
+				<a href="javascript:;" class="weui-btn weui-btn_primary b-wEit" id="saveConsignee">保存</a>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-weui.min.js"></script>
+	<script src="../js/storage.js"></script>
+	<script>
+		//重置
+		$("#reset").bind("click", function() {
+			$(".weui-cell__bd input").val("");
+		});
+		
+		
+		//保存
+		$("#saveConsignee").bind("click", function() {
+
+			/*带*必填项验证*/
+			if($("#name").val() == "" || $("#phone").val() == "" || $("#address").val() == "" ) {
+				$.alert('<i class="weui-icon-warn"></i>带*为必填项');
+			} else {
+			
+				$.alert({
+				  title: '',
+				  text: '<i class="weui-icon-success"></i> 保存成功！',
+				  onOK: function () {
+					//点击确认
+					
+					var consignee = [{
+						key: 'name',
+						value: $("#name").val()
+					},{
+						key: 'phone',
+						value: $("#phone").val()
+					},{
+						key: 'postcode',
+						value: $("#postcode").val()
+					},{
+						key: 'address',
+						value: $("#address").val()
+					}];
+					
+					//添加进本地存储
+					var sendJson = getStorage("sendJson");
+					if (sendJson != null && sendJson != "") {
+						//字符串转对象
+						var temp = toJsonObj(sendJson);
+							temp.consignee = consignee;
+							
+						//对象转字符串
+						sendJson = toJsonString(temp);
+						
+					} else {
+						sendJson = {};
+						sendJson["consignee"] = consignee;
+						sendJson = toJsonString(sendJson);
+					}
+					var isCall = saveStorage("sendJson", sendJson);
+					
+					//返回填写电子单
+					if (isCall == false) {
+						
+					} else {
+						window.location.href = "send.html";
+					}
+					
+					
+				  }
+				})
+
+			}
+			
+			
+		});
+	</script>
+</html>

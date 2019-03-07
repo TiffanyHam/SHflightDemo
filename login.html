@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		<title>深圳航空</title>
+		<link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/common.css" />
+		<script src="js/terminal.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			/*表单验证提示框修改*/
+			
+			.weui-dialog__bd {
+				color: #F43530;
+				min-height: 0px;
+			}
+			
+			.weui-dialog__title {
+				display: none;
+			}
+		</style>
+		
+	</head>
+
+	<body ontouchstart>
+		<section>
+			<div class="logo">
+				<a href="http://cargo.shenzhenair.com"><img src="images/logo.png"></a>
+			</div>
+			<div class="weui-cells weui-cells_form login_form">
+				<div class="weui-cell login_input">
+					<div class="weui-cell__hd"><img src="images/user.png" alt="" style="width:20px;margin-right:15px;display:block"></div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" type="text" id="username" placeholder="用户账号">
+					</div>
+				</div>
+
+				<div class="weui-cell login_input">
+					<div class="weui-cell__hd"><img src="images/password.png" alt="" style="width:20px;margin-right:15px;display:block"></div>
+					<div class="weui-cell__bd">
+						<input class="weui-input" type="password" id="password" placeholder="用户密码">
+					</div>
+				</div>
+
+				<div class="weui-cell login_input weui-cell_vcode">
+					<div class="weui-cell__bd">
+						<!--<input class="weui-input" type="number" id="verification" placeholder="请输入验证码">-->
+						<input class="weui-input" type="text" id="verification" placeholder="请输入验证码">
+					</div>
+					<div class="weui-cell__ft">
+						<img class="weui-vcode-img" src="images/vcode.jpg">
+					</div>
+				</div>
+
+				<!--<label for="remUName" class="weui-agree login_check">
+                       <input type="checkbox" name="uname" class="weui-agree__checkbox login_checkbox" id="remUName" onclick="rememberUser(this, 'username')">
+                       <span class="weui-agree__text">记住账号</span>
+                    </label>-->
+				<label for="remPSW" class="weui-agree login_check">
+                       <input type="checkbox" name="password" class="weui-agree__checkbox login_checkbox" id="remPSW" onclick="rememberUser(this)">
+                       <span class="weui-agree__text">记住密码</span>
+                    </label>
+
+				<div class="weui-btn-area login_btn mgr_bottom">
+					<a class="weui-btn weui-btn_primary" id="loginBtn">登录</a>
+				</div>
+				
+				<div class="weui-footer login_footer mgr_bottom">
+					<p class="weui-footer__text">客服热线：0755-26711111</p>
+				</div>
+				
+				<div class="weui-footer">
+					<p class="weui-footer__text">官网查询：
+						<a href="http://cargo.shenzhenair.com" class="weui-footer__link">http://cargo.shenzhenair.com</a>
+					</p>
+				</div>
+			</div>
+		</section>
+
+	</body>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery-weui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/md5.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/storage.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	</script>
+
+</html>
