@@ -11,3 +11,11 @@
 * 构建工具：webpack
 
 ## 截图示例
+
+![images](https://github.com/TiffanyHam/SHflightDemo/blob/master/readme_pig/img01.png)
+
+![images](https://github.com/TiffanyHam/SHflightDemo/blob/master/readme_pig/img02.png)
+
+![images](https://github.com/TiffanyHam/SHflightDemo/blob/master/readme_pig/img03.png)
+
+![images](https://github.com/TiffanyHam/SHflightDemo/blob/master/readme_pig/img04.png)
